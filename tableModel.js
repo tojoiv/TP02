@@ -49,6 +49,21 @@ tableModel.prototype = function(){
 		return indice + 1;
 	};
 	
+	var reglerColonne = function(tab){
+		var alphabet = new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		var indice = -2;
+		for (var i = 0; i < tab.length; i++){
+			for (var j = 0; j < tab[i].length; j++){
+				if (tab[i][j].getValue() != ""){
+					if (j > indice){
+						indice = j;
+					}
+				}
+			}
+		}
+		//utiliser indice
+	};
+	
 	
 	return {
 		getWidth : function() {return this.width;},
@@ -68,6 +83,9 @@ tableModel.prototype = function(){
 			if (ligne == -1)
 				return "";
 			else return ligne;			
-		}
+		},
+		/*lastColumn : function(){
+			
+		}*/
 	};
 }();
