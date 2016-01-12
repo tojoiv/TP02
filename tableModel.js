@@ -17,6 +17,8 @@ function tableModel (w, h) {
           this.cells[i][j] = new Cell("");
      }
   }
+  this.cells[8][8].setValue(12);
+  //tab[1][1] =(new Cell("zo"));
 }
 
 tableModel.prototype = function(){
@@ -25,8 +27,6 @@ tableModel.prototype = function(){
 	console.log(this.width);
 	
 	var verifierVide = function(tab){
-		//tab[1][1] =(new Cell("zo"));
-		//tab[1][1].setValue(12);
 		for (var i = 0; i < tab.length; i++){
 			for (var j = 0 ; j < tab[i].length; j++){				
 				if (tab[i][j].getValue() != "")
@@ -34,6 +34,19 @@ tableModel.prototype = function(){
 			}
 		}
 		return true;		
+	};
+	
+	var reglerLigne = function(tab){
+		var indice = -2;
+		for (var i = 0; i < tab.length ; i++){
+			for (var j = 0; j <tab[i].length; j ++){
+				if (tab[i][j].getValue() != ""){
+					indice = i;
+					break;
+				}
+			}			
+		}
+		return indice + 1;
 	};
 	
 	
@@ -48,7 +61,13 @@ tableModel.prototype = function(){
 		firstColumn : function(){
 			if (verifierVide(this.cells) == true)
 				return "";
-			else return "A"
+			else return "A";
+		},
+		lastLine : function(){
+			var ligne = reglerLigne (this.cells);
+			if (ligne == -1)
+				return "";
+			else return ligne;			
 		}
 	};
 }();
