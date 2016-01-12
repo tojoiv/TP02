@@ -45,5 +45,10 @@ tableModel.prototype = function(){
 				return "";
 			else return "1";
 		},
+		firstColumn : function(){
+			if (verifierVide(this.cells) == true)
+				return "";
+			else return "A"
+		}
 	};
 }();
