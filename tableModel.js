@@ -19,8 +19,6 @@ function tableModel (w, h) {
   }
 }
 
-//zaza
-
 tableModel.prototype = function(){
 	
 	console.log(this.cells);
