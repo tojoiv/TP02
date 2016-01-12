@@ -18,3 +18,9 @@ function tableModel (w, h) {
      }
   }
 }
+
+tableModel.prototype = function(){
+	return {
+		getWidth : function() {return this.width},
+	}
+}();
