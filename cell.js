@@ -7,3 +7,5 @@ function Cell (v) {
 
 Cell.prototype.getValue = function() {return this.value;}
 Cell.prototype.setValue = function(v) {this.value = v;}
+
+//tojo
