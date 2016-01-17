@@ -84,9 +84,26 @@ tableModel.prototype = function(){
 		return resultat;
 	};
 	
-	//console.log(nomColonne(151));
+	//console.log(nomColonne(18278));
 	
+	//console.log("za"=="zaz");
 	
+	var numeroColonne = function (nomColonne){
+		var alphabet = new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		var tableauCaractere = nomColonne.split('');
+		var nombreCaractere = tableauCaractere.length;
+		var valeurFinal = 0;
+		for (var i = 0, j = nombreCaractere - 1; i < nombreCaractere; i++, j--){
+			for (var k = 0; k < alphabet.length; k ++){
+				if (tableauCaractere[i] == alphabet[k]){
+					valeurFinal += Math.pow(26, j)*(k + 1);					
+				}
+			}			
+		}
+		return valeurFinal - 1 ;		
+	}
+	
+	//console.log(numeroColonne("VZT"));
 	
 	return {
 		getWidth : function() {return this.width;},
