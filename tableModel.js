@@ -49,8 +49,7 @@ tableModel.prototype = function(){
 		return indice + 1;
 	};
 	
-	var reglerColonne = function(tab){
-		var alphabet = new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+	var reglerColonne = function(tab){		
 		var indice = -2;
 		for (var i = 0; i < tab.length; i++){
 			for (var j = 0; j < tab[i].length; j++){
@@ -61,8 +60,26 @@ tableModel.prototype = function(){
 				}
 			}
 		}
-		//utiliser indice
+		//utiliser valeur indice
 	};
+	
+	var nomColonne = function (entier){
+		var alphabet = new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		var resultat = "";
+		for (var i = 0; i < 26; i++){
+			if (entier%26 == i){
+				if (Math.floor(entier/26) == 0){
+					resultat = alphabet[i];
+				}else{
+					resultat = nomColonne(Math.floor(entier/26) - 1) + alphabet[i];
+				}
+			}
+		}
+		return resultat;
+	};
+	
+	//console.log(nomColonne(151));
+	
 	
 	
 	return {
