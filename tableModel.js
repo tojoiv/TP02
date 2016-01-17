@@ -17,7 +17,7 @@ function tableModel (w, h) {
           this.cells[i][j] = new Cell("");
      }
   }
-  this.cells[8][8].setValue(12);
+  this.cells[56][56].setValue(12);
   //tab[1][1] =(new Cell("zo"));
 }
 
@@ -61,6 +61,12 @@ tableModel.prototype = function(){
 			}
 		}
 		//utiliser valeur indice
+		if (indice == -2){
+			return undefined;
+		} else {
+			var colonne = nomColonne(indice);
+			return colonne;
+		}		
 	};
 	
 	var nomColonne = function (entier){
@@ -101,8 +107,11 @@ tableModel.prototype = function(){
 				return "";
 			else return ligne;			
 		},
-		/*lastColumn : function(){
-			
-		}*/
+		lastColumn : function(){
+			var colonne = reglerColonne(this.cells);
+			if (colonne == undefined)
+				return "";
+			else return colonne;
+		}
 	};
 }();
