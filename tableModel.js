@@ -168,6 +168,9 @@ tableModel.prototype = function(){
 				return undefined;
 			}			
 			return this.cells[i][j];
+		},
+		getCellAtIdx : function (i, j){
+			return this.cells[i][j];
 		}
 	};
 }();
