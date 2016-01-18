@@ -109,7 +109,31 @@ tableModel.prototype = function(){
 		return valeurFinal - 1 ;		
 	}
 	
-	console.log(numeroColonne("VT"));
+	//console.log(numeroColonne("VT"));
+	
+	var numeroLigne = function (nomLigne){
+		var chiffre = new Array ("0","1","2","4","5","6","7","8","9");
+		var tableauCaractere = nomLigne.split('');
+		
+		console.log(tableauCaractere);
+		
+		var nombreCaractere = tableauCaractere.length;
+		var estChiffre = false;		
+		for (var i = 0; i< nombreCaractere; i++){
+			for (var j = 0; j < chiffre.length; j++){
+				if (tableauCaractere[i] == chiffre[j]){
+					estChiffre = true;
+				}
+			}
+			if (estChiffre == false){
+				return undefined;
+			}
+			estChiffre = false;
+		}
+		return parseInt(nomLigne) - 1;
+	}
+	
+	//console.log(numeroLigne("1299"));
 	
 	return {
 		getWidth : function() {return this.width;},
