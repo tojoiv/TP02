@@ -48,7 +48,7 @@ tableModel.prototype = function(){
 				}
 			}			
 		}
-		return (indice + 1).toString();
+		return (indice + 1);
 	};
 	
 	var reglerColonne = function(tab){		
@@ -62,6 +62,9 @@ tableModel.prototype = function(){
 				}
 			}
 		}
+		
+		return indice;
+		
 		//utiliser valeur indice
 		if (indice == -2){
 			return undefined;
@@ -152,7 +155,7 @@ tableModel.prototype = function(){
 			console.log(typeof ligne);
 			if (ligne == -1)
 				return "";
-			else return ligne;			
+			else return ligne.toString();			
 		},
 		lastColumn : function(){
 			var colonne = reglerColonne(this.cells);
@@ -171,6 +174,9 @@ tableModel.prototype = function(){
 		},
 		getCellAtIdx : function (i, j){
 			return this.cells[i][j];
-		}
+		},
+		/*insertLineAtIdx(i){
+			for (var j = i; j < this.cells )
+		}*/
 	};
 }();
