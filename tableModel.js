@@ -93,17 +93,23 @@ tableModel.prototype = function(){
 		var tableauCaractere = nomColonne.split('');
 		var nombreCaractere = tableauCaractere.length;
 		var valeurFinal = 0;
+		var estAlphabet = false;
 		for (var i = 0, j = nombreCaractere - 1; i < nombreCaractere; i++, j--){
 			for (var k = 0; k < alphabet.length; k ++){
 				if (tableauCaractere[i] == alphabet[k]){
-					valeurFinal += Math.pow(26, j)*(k + 1);					
+					valeurFinal += Math.pow(26, j)*(k + 1);	
+						estAlphabet = true;
 				}
-			}			
+			}		
+			if (estAlphabet == false){
+				return undefined;
+			}
+			estAlphabet = false;
 		}
 		return valeurFinal - 1 ;		
 	}
 	
-	//console.log(numeroColonne("VZT"));
+	console.log(numeroColonne("VT"));
 	
 	return {
 		getWidth : function() {return this.width;},
