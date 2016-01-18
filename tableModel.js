@@ -66,12 +66,7 @@ tableModel.prototype = function(){
 		return indice;
 		
 		//utiliser valeur indice
-		if (indice == -2){
-			return undefined;
-		} else {
-			var colonne = nomColonne(indice);
-			return colonne;
-		}		
+				
 	};
 	
 	var nomColonne = function (entier){
@@ -152,16 +147,18 @@ tableModel.prototype = function(){
 		},
 		lastLine : function(){
 			var ligne = reglerLigne (this.cells);
-			console.log(typeof ligne);
 			if (ligne == -1)
 				return "";
 			else return ligne.toString();			
 		},
 		lastColumn : function(){
-			var colonne = reglerColonne(this.cells);
-			if (colonne == undefined)
+			var colonne = reglerColonne(this.cells);	
+			console.log(typeof colonne);
+			if (colonne == -2){
 				return "";
-			else return colonne;
+			} else {
+				return nomColonne(colonne);
+			}
 		},
 		getCell : function (c, r){
 			var i = numeroLigne(r);
