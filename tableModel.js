@@ -39,7 +39,7 @@ tableModel.prototype = function(){
 	
 	//Prend en parametre le tableau et renvoi le nom du ligne 
 	var reglerLigne = function(tab){
-		var indice = -2;
+		var indice = -1;
 		for (var i = 0; i < tab.length ; i++){
 			for (var j = 0; j <tab[i].length; j ++){
 				if (tab[i][j].getValue() != ""){
@@ -48,11 +48,11 @@ tableModel.prototype = function(){
 				}
 			}			
 		}
-		return (indice + 1);
+		return indice;
 	};
 	
 	var reglerColonne = function(tab){		
-		var indice = -2;
+		var indice = -1;
 		for (var i = 0; i < tab.length; i++){
 			for (var j = 0; j < tab[i].length; j++){
 				if (tab[i][j].getValue() != ""){
@@ -147,14 +147,15 @@ tableModel.prototype = function(){
 		},
 		lastLine : function(){
 			var ligne = reglerLigne (this.cells);
+			console.log(ligne);
 			if (ligne == -1)
 				return "";
-			else return ligne.toString();			
+			else return (ligne + 1).toString();			
 		},
 		lastColumn : function(){
 			var colonne = reglerColonne(this.cells);	
-			console.log(typeof colonne);
-			if (colonne == -2){
+			console.log(colonne);
+			if (colonne == -1){
 				return "";
 			} else {
 				return nomColonne(colonne);
