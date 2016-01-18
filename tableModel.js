@@ -26,6 +26,7 @@ tableModel.prototype = function(){
 	console.log(this.cells);
 	console.log(this.width);
 	
+	//Verification si le tableau est vide ou pas
 	var verifierVide = function(tab){
 		for (var i = 0; i < tab.length; i++){
 			for (var j = 0 ; j < tab[i].length; j++){				
@@ -36,6 +37,7 @@ tableModel.prototype = function(){
 		return true;		
 	};
 	
+	//Prend en parametre le tableau et renvoi le nom du ligne 
 	var reglerLigne = function(tab){
 		var indice = -2;
 		for (var i = 0; i < tab.length ; i++){
@@ -46,7 +48,7 @@ tableModel.prototype = function(){
 				}
 			}			
 		}
-		return indice + 1;
+		return (indice + 1).toString();
 	};
 	
 	var reglerColonne = function(tab){		
@@ -126,6 +128,7 @@ tableModel.prototype = function(){
 			}
 			estChiffre = false;
 		}
+		
 		return parseInt(nomLigne) - 1;
 	}
 	
@@ -146,6 +149,7 @@ tableModel.prototype = function(){
 		},
 		lastLine : function(){
 			var ligne = reglerLigne (this.cells);
+			console.log(typeof ligne);
 			if (ligne == -1)
 				return "";
 			else return ligne;			
