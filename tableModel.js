@@ -175,22 +175,20 @@ tableModel.prototype = function(){
         },
         insertLineAtIdx : function (i){
             var limiteLigne = reglerLigne(this.cells);
-            var limiteColonne = reglerLigne(this.cells);
+            var limiteColonne = reglerColonne(this.cells);
             
-            console.log(this.heigth);
-            console.log(limiteLigne);
-            
-            if (limiteLigne < this.height){
+            // remarque il faut mettre this.heigth dans une variable avant de le comparer, au cas contraire ca ne marchera pas
+            var hauteur = this.heigth;
+            if (limiteLigne < hauteur){
                 for (var j = limiteLigne; j >= i ; j--){
-                    for (var k = 0; k < limiteColonne ; k ++){
+                    for (var k = 0; k <= limiteColonne ; k ++){
                         this.cells[j + 1][k].setValue(this.cells[j][k].getValue());
                     }                    
-                }
-                
+                }                
                 for (var k = 0; k <limiteColonne; k++){
                     this.cells[i][k].setValue("");
                 }
-            }
+            };
             return this.cells;
         }
     };
