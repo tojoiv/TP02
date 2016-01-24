@@ -111,7 +111,7 @@ tableModel.prototype = function(){
     //console.log(numeroColonne("VT"));
 
     var numeroLigne = function (nomLigne){
-            var chiffre = new Array ("0","1","2","4","5","6","7","8","9");
+            var chiffre = new Array ("0","1","2","3","4","5","6","7","8","9");
             var tableauCaractere = nomLigne.split('');	
             var nombreCaractere = tableauCaractere.length;
             var estChiffre = false;		
@@ -190,6 +190,25 @@ tableModel.prototype = function(){
                 }
             };
             return this.cells;
+        },
+        insertLineBefore : function(r){
+            var i = numeroLigne(r);                       
+            var limiteLigne = reglerLigne(this.cells);
+            var limiteColonne = reglerColonne(this.cells);
+            
+            // remarque il faut mettre this.heigth dans une variable avant de le comparer, au cas contraire ca ne marchera pas
+            var hauteur = this.heigth;
+            if (limiteLigne < hauteur){
+                for (var j = limiteLigne; j >= i ; j--){
+                    for (var k = 0; k <= limiteColonne ; k ++){
+                        this.cells[j + 1][k].setValue(this.cells[j][k].getValue());
+                    }                    
+                }                
+                for (var k = 0; k <limiteColonne; k++){
+                    this.cells[i][k].setValue("");
+                }
+            };
+            return this.cells;            
         }
     };
 }();
